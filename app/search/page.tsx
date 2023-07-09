@@ -16,7 +16,7 @@ interface SearchParams {
   price?: PRICE;
 }
 
-const fetchRestaurantByCity = (searchParams: SearchParams) => {
+const fetchRestaurantByCity = async (searchParams: SearchParams) => {
   const where: any = {};
 
   if (searchParams.city) {
@@ -50,6 +50,7 @@ const fetchRestaurantByCity = (searchParams: SearchParams) => {
     cuisine: true,
     location: true,
     slug: true,
+    reviews: true,
   };
   return prisma.restaurant.findMany({
     where,
@@ -58,11 +59,15 @@ const fetchRestaurantByCity = (searchParams: SearchParams) => {
 };
 
 const fetchLocation = async () => {
-  return prisma.location.findMany();
+  return prisma.location.findMany(
+    {distinct: ['name']},
+    );
 };
 
 const fetchCuisines = async () => {
-  return prisma.cuisine.findMany();
+  return prisma.cuisine.findMany(
+    {distinct: ['name']},
+    );
 };
 
 export default async function Search({
@@ -71,15 +76,15 @@ export default async function Search({
   searchParams: SearchParams;
 }) {
   const restaurants = await fetchRestaurantByCity(searchParams);
-  const locations = await fetchLocation();
-  const cuisines = await fetchCuisines();
+  const location = await fetchLocation();
+  const cuisine = await fetchCuisines();
   return (
     <>
       <Header />
       <div className="flex py-4 m-auto w-2/3 justify-between items-start">
         <SearchSideBar
-          locations={locations}
-          cuisines={cuisines}
+          locations={location}
+          cuisines={cuisine}
           searchParams={searchParams}
         />
         <div className="w-5/6">

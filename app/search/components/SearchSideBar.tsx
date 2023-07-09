@@ -44,7 +44,7 @@ export default function SearchSideBar({
             key={location.id}
           >
             {location.name}
-          </Link>
+          </Link> 
         ))}
       </div>
       <div className="border-b pb-4 mt-3 flex flex-col">
