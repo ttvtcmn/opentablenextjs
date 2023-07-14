@@ -26,7 +26,7 @@ export default function AuthModalInputs({
             placeholder="First Name"
             value={inputs.firstName}
             onChange={handleChangeInput}
-            name={inputs.firstName}
+            name="firstName"
           />
           <input
             type="text"
@@ -34,7 +34,7 @@ export default function AuthModalInputs({
             placeholder="Last Name"
             value={inputs.lastName}
             onChange={handleChangeInput}
-            name={inputs.lastName}
+            name="lastName"
           />
         </div>
       )}
@@ -45,7 +45,7 @@ export default function AuthModalInputs({
           placeholder="Email"
           value={inputs.email}
           onChange={handleChangeInput}
-          name={inputs.email}
+          name="email"
         />
       </div>
       {isSignin ? null : (
@@ -56,7 +56,7 @@ export default function AuthModalInputs({
             placeholder="Phone"
             value={inputs.phone}
             onChange={handleChangeInput}
-            name={inputs.phone}
+            name="phone"
           />
           <input
             type="text"
@@ -64,7 +64,7 @@ export default function AuthModalInputs({
             placeholder="City"
             value={inputs.city}
             onChange={handleChangeInput}
-            name={inputs.city}
+            name="city"
           />
         </div>
       )}
@@ -75,7 +75,7 @@ export default function AuthModalInputs({
           placeholder="Password"
           value={inputs.password}
           onChange={handleChangeInput}
-          name={inputs.password}
+          name="password"
         />
       </div>
     </div>
